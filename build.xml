@@ -1,17 +1,18 @@
 
-<project name="HelloWorldWS" default="war" basedir=".">
+<project name="Web Service" default="war" basedir=".">
 	<description>
   	Web Services build file
 	</description>
 
 	<!-- set global properties for this build -->
-	<property name="src.home" 			location="src" />
-	<property name="build.home" 		location="build" />
-	<property name="classes.home" 	location="build/classes" />
-	<property name="dist.home" 			location="dist" />
-	<property name="resources.home" location="resources" />
-	<property name="jaxws.home" 		location="c:/java/libs/jaxws" />
-	<property name="deploy.path" 		location="C:/Program Files/Apache Group/apache-tomcat-6.0.30/webapps" />
+	<property name="name"				 		value="ImportaMalattie" />
+	<property name="src.home" 			value="src" />
+	<property name="build.home" 		value="build" />
+	<property name="classes.home" 	value="build/classes" />
+	<property name="dist.home" 			value="dist" />
+	<property name="resources.home" value="resources" />
+	<property name="jaxws.home" 		value="c:/java/libs/jaxws" />
+	<property name="deploy.path" 		value="C:/Program Files/Apache Group/apache-tomcat-6.0.30/webapps" />
 	
 	<path id="jaxws.classpath">
 		<fileset dir="${jaxws.home}" includes="**/*.jar" />
@@ -28,6 +29,7 @@
 		<mkdir dir="${build.home}" />
 		<mkdir dir="${classes.home}" />
 		<mkdir dir="${resources.home}" />
+		<mkdir dir="${dist.home}" />
 	</target>
 
 	<target name="compile" depends="init">
@@ -36,7 +38,7 @@
 
 	<target name="war" depends="compile, generaWS" description="generate the distribution war">
 
-		<war destfile="${dist.home}/ImportaMalattie.war">
+		<war destfile="${dist.home}/${name}.war">
 			<lib dir="${jaxws.home}" />
 			<classes dir="${classes.home}" />
 			<fileset dir="${resources.home}" includes="**/*" />

@@ -4,13 +4,13 @@
 <web-app>
     <listener>
         <listener-class>
-                com.sun.xml.ws.transport.http.servlet.WSServletContextListener
+            com.sun.xml.ws.transport.http.servlet.WSServletContextListener
         </listener-class>
     </listener>
     <servlet>
         <servlet-name>ImportaMalattie</servlet-name>
         <servlet-class>
-        	com.sun.xml.ws.transport.http.servlet.WSServlet
+        		com.sun.xml.ws.transport.http.servlet.WSServlet
         </servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
