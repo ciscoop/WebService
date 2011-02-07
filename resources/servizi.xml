@@ -1,0 +1,14 @@
+<servizi>
+	<webservice applicativo="Pass">
+		<nome>Importa Malattie</nome>
+		<wsdl>http://localhost:8080/ImportaMalattie/ImportaMalattie?wsdl</wsdl>
+		<namespace>http://importa.ciscoop.sm/</namespace>
+		<servizio>ImportaMalattieService</servizio>
+	</webservice>
+	<webservice applicativo="Paghe">
+		<nome>Recupera Cedolino</nome>
+		<wsdl>http://localhost:8080/RecuperaCedolino/RecuperaCedolino?wsdl</wsdl>
+		<namespace>http://recupera.ciscoop.sm/</namespace>
+		<servizio>RecuperaCedolinoService</servizio>
+	</webservice>
+</servizi>

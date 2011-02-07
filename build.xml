@@ -1,0 +1,64 @@
+
+<project name="HelloWorldWS" default="war" basedir=".">
+	<description>
+  	Web Services build file
+	</description>
+
+	<!-- set global properties for this build -->
+	<property name="src.home" 			location="src" />
+	<property name="build.home" 		location="build" />
+	<property name="classes.home" 	location="build/classes" />
+	<property name="dist.home" 			location="dist" />
+	<property name="resources.home" location="resources" />
+	<property name="jaxws.home" 		location="c:/java/libs/jaxws" />
+	<property name="deploy.path" 		location="C:/Program Files/Apache Group/apache-tomcat-6.0.30/webapps" />
+	
+	<path id="jaxws.classpath">
+		<fileset dir="${jaxws.home}" includes="**/*.jar" />
+	</path>
+	
+	<path id="project.classpath">
+		<pathelement location="${classes.home}"/>
+	</path>
+
+	<taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport" classpathref="jaxws.classpath" />
+	<taskdef name="wsgen" classname="com.sun.tools.ws.ant.WsGen" classpathref="jaxws.classpath" />
+	
+	<target name="init">
+		<mkdir dir="${build.home}" />
+		<mkdir dir="${classes.home}" />
+		<mkdir dir="${resources.home}" />
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="${src.home}" destdir="${classes.home}" />
+	</target>
+
+	<target name="war" depends="compile, generaWS" description="generate the distribution war">
+
+		<war destfile="${dist.home}/ImportaMalattie.war">
+			<lib dir="${jaxws.home}" />
+			<classes dir="${classes.home}" />
+			<fileset dir="${resources.home}" includes="**/*" />
+		</war>
+
+	</target>
+	
+	<target name="deploy" depends="war">
+		<delete dir="${deploy.path}/ImportaMalattie" failonerror="false" />
+		<copy todir="${deploy.path}" file="${dist.home}/ImportaMalattie.war" overwrite="true"/>
+	</target>
+	
+	<target name="generaWS">
+    <wsgen xendorsed="true" fork="true" sei="sm.ciscoop.importa.ImportaMalattie" sourcedestdir="${src.home}" destdir="${classes.home}"
+    			 genwsdl="true" resourcedestdir="${resources.home}" >
+    	<classpath refid="project.classpath"/>
+    </wsgen>
+	</target>
+	
+	<target name="importaWS">
+		<wsimport xendorsed="true" fork="true" sourcedestdir="${src.home}" destdir="${classes.home}" package="sm.ciscoop.clientws2" 
+			wsdl="http://localhost:8080/ImportaMalattie/ImportaMalattie?wsdl" />
+		<!-- <wsimport sourcedestdir="src" package="clientws" wsdl="http://localhost:8080/ImportaMalattie/ImportaMalattie?wsdl" xendorsed="true"/> -->
+	</target>
+</project>

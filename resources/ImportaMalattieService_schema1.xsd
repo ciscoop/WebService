@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://importa.ciscoop.sm/" xmlns:tns="http://importa.ciscoop.sm/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="importaMalattie" nillable="true" type="tns:importaMalattie"/>
+
+  <xs:element name="importaMalattieResponse" nillable="true" type="tns:importaMalattieResponse"/>
+
+  <xs:element name="importazione" nillable="true" type="tns:importazione"/>
+
+  <xs:element name="importazioneResponse" nillable="true" type="tns:importazioneResponse"/>
+
+  <xs:element name="isOnline" nillable="true" type="tns:isOnline"/>
+
+  <xs:element name="isOnlineResponse" nillable="true" type="tns:isOnlineResponse"/>
+
+  <xs:complexType name="isOnline">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="isOnlineResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="importazione">
+    <xs:sequence>
+      <xs:element name="arg0" type="tns:malattia" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="malattia">
+    <xs:sequence>
+      <xs:element name="array" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="prova" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="importazioneResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:malattia" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="importaMalattie">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="importaMalattieResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+
