@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram>
 <source><![CDATA[#!>>
-#!Schema sintetico del flusso di operazioni 
-#!eseguite in seguito a richiesta di esecuzione del servizio
+#!Diagramma del flusso di operazioni tipico
+#!durante l'esecuzione del servizio (servizio schedulato)
 #!
 #!<<
 
